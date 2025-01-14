@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour, IInteractuable
+public class Chest : MonoBehaviour, IInteractuable
 {
 
     [SerializeField] private GameObject player;
+    
+    private Animator animator;
     public void Interactuar()
     {
         Debug.Log("SE HA COGIDO POWER UP");
@@ -17,7 +19,17 @@ public class Coin : MonoBehaviour, IInteractuable
         {
             player.GetComponent<Player>().FuerzaSalto = 29f;
         }
-        Destroy(this.gameObject);
+        animator.SetTrigger("ChestOpen");
+    }
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
     }
 
-}
+
+    private void Destruir()
+    {
+        Destroy(gameObject);
+    }
+
+    }
