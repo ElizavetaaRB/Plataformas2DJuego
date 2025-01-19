@@ -20,7 +20,6 @@ public class BossController : MonoBehaviour
         idlestate = GetComponent<Boss_Idle>();
         attackstate = GetComponent<Boss_Attack>();
         chasestate = GetComponent<Boss_Chase>();
-
        ChangeState(idlestate);
     }
 
