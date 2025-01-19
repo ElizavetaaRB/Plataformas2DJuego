@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Boss_Chase : Boss_State
 {
-    [SerializeField] private Transform targetplayer;
+    private Transform targetplayer;
 
     [SerializeField] private float chasespeed;
     [SerializeField] private float chasedist;
-    [SerializeField] Boss thisboss;
     public override void OnEnterState(BossController controller)
     {
 
@@ -21,42 +20,29 @@ public class Boss_Chase : Boss_State
 
     public override void OnUpdateState()
     {
-        if (targetplayer != null || thisboss != null)
+        transform.position = Vector3.MoveTowards(transform.position, targetplayer.position, chasespeed * Time.deltaTime);
+        if(Vector3.Distance(transform.position, targetplayer.position) <= chasedist)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetplayer.position, chasespeed * Time.deltaTime);
-            RotateForDestiny();
-            if (Vector3.Distance(transform.position, targetplayer.position) <= chasedist)
-            {
-                Animator animboss = thisboss.GetComponent<Animator>();
-                animboss.SetTrigger("JugadorEnRango");
-                controller.ChangeState(controller.Attackstate);
-            }
+            controller.ChangeState(controller.Attackstate);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D elotro)
     {
-        if (elotro.TryGetComponent(out Player player) || (elotro.gameObject.CompareTag("PlayerDetection")))
+        if (elotro.TryGetComponent(out Player player))
         {
-            Animator animboss = thisboss.GetComponent<Animator>();
-            animboss.SetBool("JugadorDetectado", true);
-            targetplayer = elotro.transform;
-            Debug.Log("PILLADDOOO");
-            
+            targetplayer = player.transform;
+
         }
     }
 
 
-    private void RotateForDestiny()
+    private void OnTriggerExit2D(Collider2D elotro)
     {
-        if (targetplayer.position.x > transform.position.x)
+        if (elotro.TryGetComponent(out Player player))
         {
-            transform.localScale = new Vector3(2, 2, 2);
-        }
-        else
-        {
-            transform.localScale = new Vector3(-2, 2, 2);
+            controller.ChangeState(controller.Idlestate);
+
         }
     }
-
 }

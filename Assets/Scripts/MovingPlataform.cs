@@ -49,12 +49,12 @@ public class MovingPlataform : MonoBehaviour
             Gizmos.DrawLine(transform.position, endPoint.position);
         }
     }
-   
+    /*
     private void OnCollisionEnter2D(Collision2D elotro)
     {
         if (elotro.gameObject.CompareTag("PlayerDetection") || elotro.gameObject.CompareTag("PlayerAreaCuerpo") )
         {
-                elotro.transform.SetParent(this.transform);
+                elotro.gameObject.transform.parent = transform;
             }
 
       
@@ -66,10 +66,10 @@ public class MovingPlataform : MonoBehaviour
     {
         if (elotro.gameObject.CompareTag("PlayerDetection") || elotro.gameObject.CompareTag("PlayerAreaCuerpo"))
         {
-            elotro.transform.SetParent(null);
+                elotro.gameObject.transform.parent = null;
 
         }
                 
     }
-    
+    */
 }
