@@ -17,8 +17,10 @@ public class Boss_Idle : Boss_State
     public override void OnEnterState(BossController controller)
     {
         base.OnEnterState(controller);
-
-        currentDestination = route[currentDestinationindex].position;
+        if (route != null)
+        {
+            currentDestination = route[currentDestinationindex].position;
+        }
     }
     public override void OnExitState()
     {
@@ -43,7 +45,7 @@ public class Boss_Idle : Boss_State
             currentDestinationindex = 0;
         }
         currentDestination = route[currentDestinationindex].position;
-        rotateForDestiny();
+        RotateForDestiny();
     }
 
 
@@ -55,7 +57,7 @@ public class Boss_Idle : Boss_State
         }
     }
 
-    private void rotateForDestiny()
+    private void RotateForDestiny()
     {
         if (currentDestination.x > transform.position.x)
         {

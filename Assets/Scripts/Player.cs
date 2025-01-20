@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform attackpoint;
     [SerializeField] private float attackradius;
     [SerializeField] private LayerMask whatisDamage;
-    [SerializeField] private float attackdamage;
+    [SerializeField] private int attackdamage;
 
     [Header("Interaction system")]
     [SerializeField] private Transform pointDetection;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
     private Animator animatorplayer;
 
     public float FuerzaSalto { get => fuerzaSalto; set => fuerzaSalto = value; }
-    public float Attackdamage { get => attackdamage; set => attackdamage = value; }
+    public int Attackdamage { get => attackdamage; set => attackdamage = value; }
 
     void Start()
     {
@@ -139,7 +140,15 @@ public class Player : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter2D(Collision2D elotro)
+    {
+        if (elotro.gameObject.CompareTag("Dead"))
+        {
+            LifeSystem sistemavidasPlayer = this.gameObject.GetComponent<LifeSystem>();
+            Destroy(this.gameObject);
+            sistemavidasPlayer.QuitGAME();
+        }
+    }
 
 
-   
 }

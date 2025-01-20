@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,6 +25,16 @@ public class Enemy : MonoBehaviour
          //   Debug.Log("player atravesado");
             LifeSystem sistemavidasPlayer = elotro.gameObject.GetComponent<LifeSystem>();
             sistemavidasPlayer.GetDamage(damage);
+            if(sistemavidasPlayer.Lifes <= 0)
+            {
+                sistemavidasPlayer.QuitGAME();
+            }
+            else
+            {
+                sistemavidasPlayer.UiLifeplayer(sistemavidasPlayer.Lifes);
+            }
+            
+            
         }
     }
 

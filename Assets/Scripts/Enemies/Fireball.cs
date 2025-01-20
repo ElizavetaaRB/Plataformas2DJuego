@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
@@ -10,7 +11,6 @@ public class Fireball : MonoBehaviour
     [SerializeField] private float floordistance;
     [SerializeField] private LayerMask whatisFloor;
     [SerializeField] private int damageFireBall;
-
     public int DamageFireBall { get => damageFireBall; }
 
     // Start is called before the first frame update
@@ -49,6 +49,14 @@ public class Fireball : MonoBehaviour
             Destroy(gameObject); // DESTRUIR ESTE OBJETO O POOL
             LifeSystem sistemavidasPlayer = elotro.gameObject.GetComponent<LifeSystem>();
             sistemavidasPlayer.GetDamage(damageFireBall);
+            if (sistemavidasPlayer.Lifes <= 0)
+            {
+                sistemavidasPlayer.QuitGAME();
+            }
+            else
+            {
+                sistemavidasPlayer.UiLifeplayer(sistemavidasPlayer.Lifes);
+            }
         }
     }
 
