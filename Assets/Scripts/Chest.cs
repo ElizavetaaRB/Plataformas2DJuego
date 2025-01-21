@@ -7,8 +7,8 @@ public class Chest : MonoBehaviour, IInteractuable
 {
 
     [SerializeField] private GameObject player;
-    [SerializeField] private TextMeshProUGUI jumpUI;
-    [SerializeField] private TextMeshProUGUI attackUI;
+    [SerializeField] private TextMeshPro jumpUI;
+    [SerializeField] private TextMeshPro attackUI;
     private Animator animator;
     public void Interactuar()
     {
@@ -16,13 +16,13 @@ public class Chest : MonoBehaviour, IInteractuable
         if(player.GetComponent<Player>().FuerzaSalto == 29f)
         {
             player.GetComponent<Player>().Attackdamage = 40;
-            attackUI.enabled = true;
+            attackUI.gameObject.SetActive(true);
             
         }
         else
         {
             player.GetComponent<Player>().FuerzaSalto = 29f;
-            jumpUI.enabled = true;
+            jumpUI.gameObject.SetActive(true);
         }
         animator.SetTrigger("ChestOpen");
     }
