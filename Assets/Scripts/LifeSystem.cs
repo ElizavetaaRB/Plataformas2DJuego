@@ -10,7 +10,10 @@ public class LifeSystem : MonoBehaviour
     [SerializeField] private int lifes;
     [SerializeField] private TextMeshProUGUI playerlifes;
 
-    public int Lifes { get => lifes; }
+
+    private float blinkdura = 0.5f;
+
+    public int Lifes { get => lifes; set => lifes = value; }
 
     public void GetDamage(int damage)
     {
@@ -32,8 +35,15 @@ public class LifeSystem : MonoBehaviour
     public void UiLifeplayer(int vidasplayer)
     {
         playerlifes.text = "Lifes: " + vidasplayer;
+        StartCoroutine(BlinkText());
     }
 
+    IEnumerator BlinkText()
+    {
+        playerlifes.color = Color.yellow;
+        yield return new WaitForSeconds(blinkdura);
+        playerlifes.color = Color.white;
 
+    }
 
-}
+    }
