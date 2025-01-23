@@ -24,7 +24,6 @@ public class Boss_Attack : Boss_State
 
     public override void OnExitState()
     {
-        isAttack = false;
     }
 
     public override void OnUpdateState()
@@ -72,11 +71,6 @@ public class Boss_Attack : Boss_State
                 playeranim.enabled = true;
                 Debug.Log("Despetrificado");
 
-                // Verificar si el jugador todavía está en el rango de ataque después de despetrificar
-                if (Vector3.Distance(transform.position, targetplayer.position) <= attackDistance)
-                {
-                    Attack();
-                }
             }
         }
     }
@@ -84,9 +78,8 @@ public class Boss_Attack : Boss_State
     private void Attack()
     {
         Debug.Log("Ataqueee");
-        Animator animboss = thisboss.GetComponent<Animator>();
 
-        if (player != null)
+        if (player != null && (Vector3.Distance(transform.position, targetplayer.position) <= attackDistance))
         {
             LifeSystem sistemavidasPlayer = player.gameObject.GetComponent<LifeSystem>();
             sistemavidasPlayer.GetDamage(thisboss.Damage);
@@ -109,14 +102,16 @@ public class Boss_Attack : Boss_State
 
         // Seleccionar aleatoriamente entre petrificar o atacar
         int randomAttack = Random.Range(0, 2);
+        animboss.SetTrigger("JugadorEnRango");
+        Debug.Log(randomAttack);    
         if (randomAttack == 0)
         {
-            animboss.SetTrigger("JugadorEnRango");
-            yield return Petrificar();
+            Debug.Log("Petrificado");
+            Petrificar();
+           
         }
         else
         {
-            animboss.SetTrigger("JugadorEnRango");
             Attack();
         }
 

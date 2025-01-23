@@ -3745,7 +3745,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6424384, y: 4.3320556, z: -9.993471}
+  m_LocalPosition: {x: -4.6024384, y: 4.372056, z: -9.993471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22626,7 +22626,7 @@ Transform:
   m_GameObject: {fileID: 1476035048}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6424384, y: 4.3320556, z: -9.993471}
+  m_LocalPosition: {x: -4.6024384, y: 4.372056, z: -9.993471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25428,7 +25428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 90
-  petrify_duration: 5
+  petrify_duration: 2
 --- !u!114 &1945561749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25453,8 +25453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8983ff4c4a9d144c86c9b2f20ac2e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 1.2
-  timeBetweenAttacks: 6
+  attackDistance: 0.7
+  timeBetweenAttacks: 3
   thisboss: {fileID: 1945561748}
   player: {fileID: 5489862929853046264}
   playerlifes: {fileID: 986198981}
@@ -25471,7 +25471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chasespeed: 5.5
-  chasedist: 1.2
+  chasedist: 0.7
   thisboss: {fileID: 1945561748}
 --- !u!114 &1945561752
 MonoBehaviour:
@@ -27390,7 +27390,7 @@ Transform:
   m_GameObject: {fileID: 5489862929853046264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.42, y: 2.87, z: 0}
+  m_LocalPosition: {x: -11.38, y: 2.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
