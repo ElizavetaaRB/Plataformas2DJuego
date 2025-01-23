@@ -21242,6 +21242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisboss: {fileID: 1945561748}
   completed: {fileID: 2033573743}
+  player: {fileID: 8328907574438213449}
+  gameovermenu: {fileID: 1865458225}
 --- !u!4 &1267511694
 Transform:
   m_ObjectHideFlags: 0
